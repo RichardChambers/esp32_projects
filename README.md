@@ -17,8 +17,23 @@ Development Board:
  - https://github.com/nodemcu/nodemcu-firmware/tree/dev-esp32
  - https://github.com/Nicholas3388/LuaNode
 
+See also https://www.arduino.cc/en/Tutorial/HomePage with various tutorials about Arduino IDE.
+
 If it can't get bluetooth working?
+
 Using Node32s as the Board selection. To reference GPIO pins in code use just the number, for example "digitalWrite(13, HIGH)" sets GPIO13 high.
 The built-in LED to GPIO2.
 
-I am using these devices with the Arduino IDE on a Microsoft Surface Pro 2 with Windows 10.
+My development environment is:
+ - the Arduino IDE 1.8.13 on a Microsoft Surface Pro 2 with Windows 10
+ - using a standard USB to micro-USB cable from a Samsung cell phone
+   - powers the ESP32
+   - provides serial cable connectivity for downloading programs and the IDE Serial Monitor
+
+The Arduino IDE shows the following settings:
+ - Board: "NodeMCU-32S"
+ - Upload Speed: "921600"
+ - Flash Frequency: "80MHz"
+ 
+ Get Board Info shows "Unknown board".
+ 
