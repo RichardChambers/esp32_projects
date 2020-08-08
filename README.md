@@ -1,9 +1,11 @@
 # esp32_projects
 various projects with an ESP32 microcontroller using various sensors and breadboards
 
-I have purchased from Amazon.com two ESP32 microcontrollers.
+I have purchased from Amazon.com two ESP32S development boards with the ESP32 microcontroller.
 
 MELIFE 2 Pack ESP32 ESP-32S Development Board 2.4GHz Dual-Mode WiFi + Bluetooth Dual Cores Microcontroller Processor Integrated with ESP32s Antenna RF AMP Filter AP STA for Arduino IDE
+
+**Product Description**
 
 The product description says:
  - 2 PACK 2.4GHz Dual Mode WiFi + Bluetooth Development Board
@@ -37,3 +39,14 @@ The Arduino IDE shows the following settings:
  
  Get Board Info shows "Unknown board".
  
+**RTOS for the ESP32 Development Board**
+
+FreeRTOS https://www.freertos.org/index.html
+
+Espressif ESP-IDF Programming Guide - Section on FreeRTOS https://docs.espressif.com/projects/esp-idf/en/latest/esp32/api-reference/system/freertos.html
+
+ESP32: Introduction to FreeRTOS https://icircuit.net/esp32-introduction-freertos/1297
+
+Mongoose OS https://mongoose-os.com/
+
+ARM Mbed OS https://os.mbed.com/
