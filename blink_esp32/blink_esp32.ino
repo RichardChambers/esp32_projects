@@ -146,7 +146,7 @@ static int        DelayPin_3Timing[] = {1000, 500, 500, 1000};
 //
 // Since the button is a mechanical device we need to perform what
 // is called debouncing or removing spurious signals caused by the
-// mechanical parts make and breaking electrical contact as they
+// mechanical parts making and breaking electrical contact as they
 // move. By commenting out the define TURN_ON_DEBOUNCE below, you
 // can modify the behavior of this program to not perform debouncing
 // so that you can compare the effect of debouncing versus not debouncing
@@ -154,7 +154,12 @@ static int        DelayPin_3Timing[] = {1000, 500, 500, 1000};
 
 #define TURN_ON_DEBOUNCE
 
-static DelayClass DelayPin_button (5000, 0);
+// Use 100 milliseconds as the debounce duration. This assumes a normal button press
+// will be less than 100 milliseconds.
+// NOTE: You can deliberately hold the button down and wiggle it to generate suprious
+//       pin state changes so this is not bullet proof however it does address the most
+//       common case.
+static DelayClass DelayPin_button (5000, 0);   // duration for counting number of button presses
 static DelayClass DelayPin_debounce(100, 0);   // use a duration of 100 milliseconds for debouncing
 
 static int iReadSave = LOW;    // saved button press state
@@ -175,6 +180,11 @@ static DelayClass DelaySerial3(250, 0, 73);
 
 void setup() {
   // put your setup code here, to run once:
+  // this function is used to do run once environment setup to
+  // do those actions that only need to be done once when the
+  // program starts up. These actions are such things as initialing
+  // the Serial Monitor object, the WiFi object, or setting
+  // pin modes to be input or output.
   
 #if 1
   // serial monitor at 9600 rather than 115200
@@ -191,6 +201,8 @@ void setup() {
 
 #if defined(TURN_ON_DEBOUNCE)
   Serial.println ("  debouncing for button press turned on.");
+#else
+  Serial.println ("  debouncing for button press turned off.");
 #endif
 
 #if defined(MULTIPLE_LEDS)
