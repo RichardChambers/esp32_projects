@@ -227,27 +227,37 @@ void loop() {
   // Button press state functionality to detect button press state
   // changes from a momentary contact switch type button. The pin
   // will be HIGH if the button is pressed and the pin will be LOW
-  // when the button is released.
+  // when the button is released. We perform debouncing by ignoring
+  // pin state changes for a short duration after we detect a pin
+  // state change.
 
 #if defined(TURN_ON_DEBOUNCE)
-  if (! DelayPin_debounce.CheckDelayStart()) {  // are we in a debounce period?
+  if (! DelayPin_debounce.CheckDelayStart()) {  // in a debounce period?
 #endif
     int  iRead = digitalRead (myPin_button);
 
-    if (iRead != iReadSave) {
+    if (iRead != iReadSave) {            // has pin state changed?
 #if defined(TURN_ON_DEBOUNCE)
-      DelayPin_debounce.StartDelay();  // just use what ever debounce period has been set when defined
+      DelayPin_debounce.StartDelay();    // start debounce period, same delay
 #endif
       if (iRead == HIGH) {
         if (! DelayPin_button.CheckDelayStart()) {
+          // button has been pressed and we are not in a counting period.
+          // start our count and start the timer for the counting duration.
           DelayPin_button.ulCounter = 1;
           DelayPin_button.StartDelay(5000);
           Serial.print("  start button press count ");
           Serial.println (DelayPin_button.ulCounter);
         } else if ( ! DelayPin_button.CheckDelayDone()) {
+          // we are in a counting period so lets count this button press.
           DelayPin_button.ulCounter++;
         }
       }
+      // save the current pin state so that we can use it to compare
+      // next time in order to see pin state changes. remember that the
+      // ESP32 is polling the pin a lot faster than our finger is moving
+      // so a single physical button press with our finger will show a
+      // HIGH pin state over multiple times through the loop() function.
       iReadSave = iRead;
       Serial.print (" pin myPin_button read ");
       Serial.println (iRead);
