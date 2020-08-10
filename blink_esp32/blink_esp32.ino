@@ -31,6 +31,11 @@
 #define MULTIPLE_LEDS
 //#define MULTIPLE_SERIAL
 
+// You will need to do Sketch -> Add file ...  to add the two files
+// needed for the DelayClass and StateClass to this sketch. The
+// two files are in the Lib source folder.
+//  - DelayState.h
+//  - DelayState.cpp
 #include "DelayState.h"
 
 static unsigned long ulLoopCount = 0;
