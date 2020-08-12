@@ -5,6 +5,10 @@ I have purchased from Amazon.com two ESP32S development boards with the ESP32 mi
 
 MELIFE 2 Pack ESP32 ESP-32S Development Board 2.4GHz Dual-Mode WiFi + Bluetooth Dual Cores Microcontroller Processor Integrated with ESP32s Antenna RF AMP Filter AP STA for Arduino IDE
 
+**Helpful websites**
+
+The Internet of Things with ESP32 containing links to a variety of technical articles http://esp32.net/
+
 **Product Description**
 
 The product description says:
@@ -39,6 +43,12 @@ The Arduino IDE shows the following settings:
  
  Get Board Info shows "Unknown board".
  
+ 
+**Various articles about the ESP32 and using it with sensors**
+
+ESP32: DHT11/22 Humidity Temperature Sensor Interfacing Example https://circuits4you.com/2019/01/25/esp32-dht11-22-humidity-temperature-sensor-interfacing-example/
+
+
 **RTOS for the ESP32 Development Board**
 
 FreeRTOS https://www.freertos.org/index.html
