@@ -30,7 +30,7 @@ If it can't get bluetooth working?
 Using Node32s as the Board selection. To reference GPIO pins in code use just the number, for example "digitalWrite(13, HIGH)" sets GPIO13 high.
 The built-in LED to GPIO2.
 
-My development environment is:
+My development environment was:
  - the Arduino IDE 1.8.13 on a Microsoft Surface Pro 2 with Windows 10
  - using a standard USB to micro-USB cable from a Samsung cell phone
    - powers the ESP32
@@ -43,7 +43,21 @@ The Arduino IDE shows the following settings:
  
  Get Board Info shows "Unknown board".
  
- 
+ My development environment currently:
+  - the Arduino IDE 2.0 on a Dell laptop with Windows 10
+
+**Adding support for ESP32 in Arduino IDE 2**
+
+I installed Arduino IDE 2.0 and it worked fine out of the box with an Arduino UNO R3. I then used the tutorial at https://randomnerdtutorials.com/installing-esp32-arduino-ide-2-0/ to install the Espresif ESP32 libraries at `https://raw.githubusercontent.com/espressif/arduino-esp32/gh-pages/package_esp32_index.json`.
+
+I then ran into a problem with my ESP32 not automatically creating a COM port when it was plugged in. I then found this posting, https://www.esp32.com/viewtopic.php?t=5841 which mentioned that additional device drives needed to be installed.
+
+> 2) The USB connection is not handled by the ESP32, as an ESP32 only has serial lines (rx and tx), no USB. A dev board typically includes some sort of USB to serial converter chip (sometimes refered to as FTDI). This chip communicates with your computer, resulting in the creation of a virtual COM port. If you have a driver for that chip instaled, otherwise it won't work. Without a driver the chip probably turns up as unsupported or unrecognised device in your hardware list. Although the ESP32 module may be the same, you might have a dev board with a different USB to serial converter than other devices you might have tested on your computer. So if one dev board works and another one doesn't, that does not necessarily mean the board is defective. You might just need to install a driver for the USB to serial chip on your dev board.
+
+I first installed the CH340 USB device driver https://sparks.gogo.co.nz/ch340.html which did not help
+
+I then installed the CP210x USB to UART Bridge VCP Drivers from https://www.silabs.com/developers/usb-to-uart-bridge-vcp-drivers and that worked. I now can access a plugged in Arduino UNO R3 from one COM port and an ESP32 from another COM port.
+
 **Various articles about the ESP32 and using it with sensors**
 
 ESP32: DHT11/22 Humidity Temperature Sensor Interfacing Example https://circuits4you.com/2019/01/25/esp32-dht11-22-humidity-temperature-sensor-interfacing-example/
