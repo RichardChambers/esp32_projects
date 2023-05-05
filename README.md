@@ -58,6 +58,16 @@ I first installed the CH340 USB device driver https://sparks.gogo.co.nz/ch340.ht
 
 I then installed the CP210x USB to UART Bridge VCP Drivers from https://www.silabs.com/developers/usb-to-uart-bridge-vcp-drivers and that worked. I now can access a plugged in Arduino UNO R3 from one COM port and an ESP32 from another COM port.
 
+To compile I target "NodeMCU32S".
+
+**Adding support for ESP8266 in Arduino IDE 2**
+
+I have an ESP8266 with WiFi for other experiments. It uses the same COM port as the ESP32. I did have to modify the File -> Preferences -> Additional libraries which now looks like:
+
+`http://arduino.esp8266.com/stable/package_esp8266com_index.json, https://raw.githubusercontent.com/espressif/arduino-esp32/gh-pages/package_esp32_index.json`
+
+To compile I target "Generic ESP8266 Module".
+
 **Various articles about the ESP32 and using it with sensors**
 
 ESP32: DHT11/22 Humidity Temperature Sensor Interfacing Example https://circuits4you.com/2019/01/25/esp32-dht11-22-humidity-temperature-sensor-interfacing-example/
